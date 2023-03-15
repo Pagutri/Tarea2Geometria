@@ -1,9 +1,12 @@
+from Point import Point
+
 class NodoQ:
     """Arbol binario para guardar los puntos evento. Cada nodo
     guarda el punto y el segmento que comienza en ese punto, o
     'None' si ningun segmento comienza en ese punto. El orden
     va de menor a mayor coordenada 'y' del punto. Puntos con la
     misma coordenada 'y' van de menor a mayor coordenada 'x'."""
+    # Puede haber más de un segmento empezando ahi. Corregir.
     def __init__(self, punto, segmento):
         self.key = [punto, segmento]
         self.left = None
@@ -13,18 +16,11 @@ def insertar(nodo, punto, segmento):
     # Crear nuevo nodo
     if nodo is None:
         return NodoQ(punto, segmento)
-        
-    # Elegir posicion del nodo segun coordenada 'y'
-    if punto.y < nodo.key[0].y:
+
+    if punto < nodo.key[0]:
         nodo.left = insertar(nodo.left, punto, segmento)
-    elif punto.y > nodo.key[0].y:
+    else:
         nodo.right = insertar(nodo.right, punto, segmento)
-    # Elegir posicion del nodo segun coordenada 'x'
-    elif punto.x < nodo.key[0].x:
-        nodo.left = insertar(nodo.left, punto, segmento)
-    elif punto.x > nodo.key[0].x:
-        nodo.right = insertar(nodo.right, punto, segmento)
-        #elif punto.x = nodo.key[0].x:
         # El punto a insertar no puede tener las mismas coordenadas 
         # que la de ningun nodo en el arbol porque no queremos
         # repetir eventos. Escribir funcion 'buscar_en_arbol()'

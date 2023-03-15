@@ -20,6 +20,19 @@ class Point():
         elif self.y > p.y:
             return False
         else:
-            if self.
+            if self.x > p.x:
+                return True
+            else:
+                return False
 
+    def __gt__(self, p):
+        if self.y < p.y:
+            return False
+        elif self.y > p.y:
+            return True
+        else:
+            if self.x < p.x:
+                return True
+            else:
+                return False
     
