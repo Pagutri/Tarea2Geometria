@@ -106,3 +106,10 @@ def buscar_nodo(raiz, key):
         return buscar_nodo(raiz.right, key)
 
 
+def nodo_maximo(raiz):
+    current = raiz
+    
+    while current and current.right is not None:
+        current = current.right
+
+    return current
