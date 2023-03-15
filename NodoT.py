@@ -13,7 +13,7 @@ class NodoT:
 def insertar(nodo, segmento):
     # Crear nuevo nodo
     if nodo is None:
-        return NodoQ(punto, segmento)
+        return NodoT(segmento)
 
     if punto < nodo.key[0]:
         nodo.left = insertar(nodo.left, punto, segmento)
