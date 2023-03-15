@@ -30,7 +30,7 @@ def insertar(nodo, punto, segmento):
 def inorder(root):
     if root is not None:
         inorder(root.left)
-        print(root.key[0].x, root.key[0].y, end=" ")
+        print("(", root.key[0].x, root.key[0].y, end=") ")
         inorder(root.right)
         
 def nodo_minimo(nodo):
@@ -43,7 +43,54 @@ def nodo_minimo(nodo):
 
     return current
     
+def borrar_nodo(root, key):
+    """key tiene que ser una lista con un punto y su(s) segmento(s)
+    o su 'None'."""
+    # base Case
+    if root is None:
+        return root
 
+    # If the key to be deleted is
+    # smaller than the root's key,
+    # then it lies in left subtree
+    if key[0] < root.key[0]:
+        root.left = borrar_nodo(root.left, key)
+
+    # If the key to be deleted is
+    # greater than the root's key,
+    # then it lies in right subtree
+    elif key[0] > root.key[0]:
+        root.right = borrar_nodo(root.right, key)
+
+    # If key is same as root's key,
+    # then this is the node
+    # to be deleted
+    else:
+
+        # Node with only one child
+        # or no child
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        elif root.right is None:
+            temp = root.left
+            root = None
+            return temp
+
+        # Node with two children:
+        # Get the inorder successor(smallest
+        # in the right subtree)
+        temp = nodo_minimo(root.right)
+
+        # Copy the inorder successor's
+        # content to this node
+        root.key = temp.key
+
+        # Delete the inorder successor
+        root.right = borrar_nodo(root.right, temp.key)
+
+    return root
         
 # Funcion buscar
 
