@@ -15,21 +15,17 @@ def insertar(nodo, segmento):
     if nodo is None:
         return NodoT(segmento)
 
-    if punto < nodo.key[0]:
-        nodo.left = insertar(nodo.left, punto, segmento)
+    if segmento < nodo.key:
+        nodo.left = insertar(nodo.left, segmento)
     else:
-        nodo.right = insertar(nodo.right, punto, segmento)
-        # El punto a insertar no puede tener las mismas coordenadas 
-        # que la de ningun nodo en el arbol porque no queremos
-        # repetir eventos. Escribir funcion 'buscar_en_arbol()'
-        # y correrla antes de insertar() para evitar esto.
+        nodo.right = insertar(nodo.right, segmento)
     return nodo
 
-def inorder(root):
+def inorder(root, n):
     if root is not None:
-        inorder(root.left)
-        print("(", root.key[0].x, root.key[0].y, end=") ")
-        inorder(root.right)
+        inorder(root.left, n - 1)
+        root.key.dibujar(str(n))
+        inorder(root.right, n + 1)
         
 def nodo_minimo(nodo):
     """Devuelve el nodo con la minima coordenada Y,
