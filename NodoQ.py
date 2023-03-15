@@ -36,3 +36,22 @@ def inorder(root):
         inorder(root.left)
         print(root.key[0].x, root.key[0].y, end=" ")
         inorder(root.right)
+        
+def nodo_minimo(nodo):
+    """Devuelve el nodo con la minima coordenada Y,
+    es decir, la hoja de mas a la izquierda."""
+    current = nodo
+    
+    while current and current.left is not None:
+        current = current.left
+
+    return current
+    
+
+        
+# Funcion buscar
+
+
+# Funcion borrar
+
+
