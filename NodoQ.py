@@ -91,10 +91,18 @@ def borrar_nodo(root, key):
         root.right = borrar_nodo(root.right, temp.key)
 
     return root
-        
-# Funcion buscar
 
 
-# Funcion borrar
+def buscar_nodo(raiz, key):
+    """Devuelve 'True' si el nodo se encuentra en el árbol
+    y 'False' si no."""
+    if raiz == None:
+        return False
+    if raiz.key[0] == key[0]:
+        return True
+    if key[0] < raiz.key[0]:
+        return buscar_nodo(raiz.left, key)
+    else:
+        return buscar_nodo(raiz.right, key)
 
 
