@@ -29,8 +29,6 @@ def inorder(root):
         inorder(root.right)
         
 def nodo_minimo(nodo):
-    """Devuelve el nodo con la minima coordenada Y,
-    es decir, la hoja de mas a la izquierda."""
     current = nodo
     
     while current and current.left is not None:
@@ -39,8 +37,6 @@ def nodo_minimo(nodo):
     return current
     
 def borrar_nodo(root, key):
-    """key tiene que ser una lista con un punto y su(s) segmento(s)
-    o su 'None'."""
     # base Case
     if root is None:
         return root
@@ -48,19 +44,13 @@ def borrar_nodo(root, key):
     # If the key to be deleted is
     # smaller than the root's key,
     # then it lies in left subtree
-    if key[0] < root.key[0]:
+    if key < root.key:
         root.left = borrar_nodo(root.left, key)
-
-    # If the key to be deleted is
-    # greater than the root's key,
-    # then it lies in right subtree
-    elif key[0] > root.key[0]:
-        root.right = borrar_nodo(root.right, key)
 
     # If key is same as root's key,
     # then this is the node
     # to be deleted
-    else:
+    elif key == root.key:
 
         # Node with only one child
         # or no child
@@ -84,6 +74,12 @@ def borrar_nodo(root, key):
 
         # Delete the inorder successor
         root.right = borrar_nodo(root.right, temp.key)
+
+    # If the key to be deleted is
+    # greater than the root's key,
+    # then it lies in right subtree
+    else:
+        root.right = borrar_nodo(root.right, key)
 
     return root
 

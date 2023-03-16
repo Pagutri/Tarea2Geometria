@@ -6,6 +6,9 @@ class Segment():
         self.p1 = p1
         self.p2 = p2
 
+    def __eq__(self, s):
+        return self.p1 == s.p1 and self.p2 == s.p2
+
     def __lt__(self, s):
         """Segmentos más a la izquierda son menores.
         Esta sobrecarga sólo aplica para cuando recién
