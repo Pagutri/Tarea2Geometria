@@ -21,11 +21,12 @@ def insertar(nodo, segmento):
         nodo.right = insertar(nodo.right, segmento)
     return nodo
 
-def inorder(root, n):
+def inorder(root):
     if root is not None:
-        inorder(root.left, n - 1)
-        root.key.dibujar(str(n))
-        inorder(root.right, n + 1)
+        inorder(root.left)
+        print("[(", root.key.p1.x, root.key.p1.y, ")(", root.key.p2.x, root.key.p2.y, ")]\n")
+        root.key.dibujar()
+        inorder(root.right)
         
 def nodo_minimo(nodo):
     """Devuelve el nodo con la minima coordenada Y,
