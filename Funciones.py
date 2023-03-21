@@ -34,3 +34,10 @@ def segments_intersect(s1, s2):
         return False
 
 
+def find_new_event(sl, sr, p):
+    
+    
+    
+    
+    
+    
