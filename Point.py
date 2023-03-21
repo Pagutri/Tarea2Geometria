@@ -3,8 +3,8 @@ from math import sqrt, acos, atan, pi
 class Point():
     """2D Points"""
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
+        self.x = round(x, 3)
+        self.y = round(y, 3)
         
     def __eq__(self, p):
         return self.x == p.x and self.y == p.y
