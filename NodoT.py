@@ -85,12 +85,12 @@ def borrar_nodo(root, key):
 
 
 def buscar_nodo(raiz, key):
-    """Devuelve 'True' si el nodo se encuentra en el árbol
-    y 'False' si no."""
+    """Devuelve el nodo que contiene 'key' si lo
+    encuentra en el arbol y None si no."""
     if raiz == None:
-        return False
+        return None
     if raiz.key == key:
-        return True
+        return raiz
     if key < raiz.key:
         return buscar_nodo(raiz.left, key)
     else:
@@ -104,3 +104,13 @@ def nodo_maximo(raiz):
         current = current.right
 
     return current
+    
+    
+def vecino_izquierda(raiz, nodo):
+    """Encuentra el vecino de la izquierda
+    de 'nodo'."""
+    
+    
+    
+    
+    
