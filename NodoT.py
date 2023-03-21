@@ -89,9 +89,9 @@ def buscar_nodo(raiz, key):
     y 'False' si no."""
     if raiz == None:
         return False
-    if raiz.key[0] == key[0]:
+    if raiz.key == key:
         return True
-    if key[0] < raiz.key[0]:
+    if key < raiz.key:
         return buscar_nodo(raiz.left, key)
     else:
         return buscar_nodo(raiz.right, key)
