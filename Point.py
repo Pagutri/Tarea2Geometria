@@ -6,6 +6,9 @@ class Point():
         self.x = round(x, 3)
         self.y = round(y, 3)
         
+    def __sub__(self, p):
+        return Point(self.x - p.x, self.y - p.y)
+        
     def __eq__(self, p):
         return self.x == p.x and self.y == p.y
         
