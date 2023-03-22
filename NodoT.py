@@ -109,6 +109,7 @@ def nodo_maximo(raiz):
 def vecino_izquierda(raiz, nodo):
     """Encuentra el vecino de la izquierda
     de 'nodo'."""
+    pass
     
     
     

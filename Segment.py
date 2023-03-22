@@ -28,9 +28,6 @@ class Segment():
     
     def dibujar(self, label = None):
         plt.plot([self.p1.x, self.p2.x], [self.p1.y, self.p2.y], label = label)
-        #return 1
-        
-        
-    # Tal vez pueda usar el > para la comparacion
-    # despues de un punto de cruce
+
+
 
