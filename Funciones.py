@@ -34,8 +34,36 @@ def segments_intersect(s1, s2):
         return False
 
 
-def find_new_event(sl, sr, p):
+def punto_de_cruce(sa, sb):
+    """Encuentra el punto de cruce una vez que se
+    comprobó que los segmentos 'sa' y 'sb' sí se
+    cruzan."""
+    # Caso especial en que un segmento es vertical
+    # y el otro es horizontal
+    if sa.p1.x == sa.p2.x and sb.p1.y == sb.p2.y:
+        x = sa.p1.x
+        y = sb.p1.y 
+    elif sb.p1.x == sb.p2.x and sa.p1.y == sa.p2.y:
+        x = sb.p1.x
+        y = sa.p1.y
+    # En el resto de casos se evita dividir por cero
+    elif sa.p1.x == sa.p2.x or sb.p1.x == sb.p2.x:
+        ma = (sa.p2.x - sa.p1.x)/(sa.p2.y - sa.p1.y)
+        mb = (sb.p2.x - sb.p1.x)/(sb.p2.y - sb.p1.y)
+        y = (ma*sa.p1.y - mb*sb.p1.y + sb.p1.x - sa.p1.x)/(ma - mb)
+        x = ma*(y - sa.p1.y) + sa.p1.x
+    else:
+        ma = (sa.p2.y - sa.p1.y)/(sa.p2.x - sa.p1.x)
+        mb = (sb.p2.y - sb.p1.y)/(sb.p2.x - sb.p1.x)
+        x = (ma*sa.p1.x - mb*sb.p1.x + sb.p1.y - sa.p1.y)/(ma - mb)
+        y = ma*(x - sa.p1.x) + sa.p1.y
     
+    return Point(x, y)
+
+
+
+def find_new_event(sl, sr, p):
+    pass
     
     
     
